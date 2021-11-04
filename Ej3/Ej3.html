@@ -18,14 +18,30 @@
     
     <script>
         function myFunction(){
-            var niveles = document.getElementById("p1").value;//getElementById devuelve un objeto DOM, se le pide el value devuelve una cadena y hago casting a int 
-            
-            for(i=texto.length;i>=0;i--){
-                console.log(i);
-                reverso=reverso+texto.substring(i-1,i);
-                console.log(reverso);
+            var nivel = document.getElementById("p1").value;//getElementById devuelve un objeto DOM, se le pide el value devuelve una cadena y hago casting a int 
+            console.log(nivel);
+            var i,j;
+            var num="";
+            j=1;
+            while(nivel>0){
+                var num1="";
+                for(i=0;i<=nivel-1;i++){
+                    num1+=j.toString()+" ";                    
+                }
+                j++;
+                alert(num1);
+                nivel--;
+                num+=num1+"<br/>";
+                
+                if(){
+                    num+=num1+"<br/>";
+                    for(i=0;i<=nivel-1;i++){
+                        num1+=j.toString()+" ";                    
+                }  
+                }
+                            
             }
-            document.getElementById("resultado").innerHTML="El texto invertido es: "+reverso;
+            document.getElementById("resultado").innerHTML=num;
         }
     </script>
 </body>
