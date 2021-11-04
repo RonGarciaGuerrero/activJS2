@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ej3</title>
+    <!-- Autor: Ronald Garcia Guerrero -->
+</head>
+<body>
+    <h1>Ej3. Implemente un script que imprima la siguiente estructura en una página web . Para ello, use una única estructura while. NOTA: Será válido usar también bucles for.
+    </h1>
+    
+    <label>Introduzca el número de niveles:</label><br><br>
+    <input required type="number" id="p1" name="p1" min="1"><br><br>
+    <button onclick="myFunction()">Imprimir</button>
+    <p id="resultado"></p>
+    
+    <script>
+        function myFunction(){
+            var niveles = document.getElementById("p1").value;//getElementById devuelve un objeto DOM, se le pide el value devuelve una cadena y hago casting a int 
+            
+            for(i=texto.length;i>=0;i--){
+                console.log(i);
+                reverso=reverso+texto.substring(i-1,i);
+                console.log(reverso);
+            }
+            document.getElementById("resultado").innerHTML="El texto invertido es: "+reverso;
+        }
+    </script>
+</body>
+</html>
