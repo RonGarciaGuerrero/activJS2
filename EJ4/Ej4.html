@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ej3</title>
+    <title>Ej4</title>
     <!-- Autor: Ronald Garcia Guerrero -->
 </head>
 <body>
@@ -14,57 +14,85 @@
     </h1>
     
     <label>Introduzca la contraseña a evaluar:</label><br><br>
-    <input required type="text" id="psw" name="psw"  title="Debe contener al menos un numero, letras mayusculas y minusculas, en total al menos 10 caracteres"><br><br>
+    <input required size="40" type="text" id="psw" name="psw"  title="Debe contener al menos un numero, letras mayusculas y minusculas, en total al menos 10 caracteres"><br><br>
     <button onclick="myPassword()">Evaluar</button>
     <p id="resultado"></p>
     <!-- pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{10,}"  -->
     <script>
-    
         function myPassword(){
             var pass = document.getElementById("psw").value;
+            console.log(pass);
             var fuerte,debil;
             var mayusc,minusc,simb,num;
-            var contMay,contMin,contSim,contNum;
-            var porcentMay,porcentMin,porcentSim,porcentNum;
-            fuerte=false;
-            debil=true;
-            console.log(pass);
+            var contMay,contMin,contSim,contNum, numCaracteres;
+            var porcentMay,porcentMin,porcentSim,porcentNum,tercio;
+            numCaracteres=pass.length;
+            //console.log(numCaracteres);
+            contMay=0;
+            contMin=0;
+            contSim=0;
+            contNum=0;
             mayusculas="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
             minusculas="abcdefghijklmnopqrstuvwxyz";
             simbolos="!\"#$%&'()*+,-./";
             numeros="0123456789";
+
             //voy poniendo contadores a cada elemento
-            if(pass.includes(mayusculas)){
-                contMay++;
-            }
-            if(pass.includes(minusculas)){
-                contMin++;
-            }
-            if(pass.includes(numeros)){
-                contNum++;
-            }
-            if(pass.includes(simbolos)){
-                contSim++;
-            }
-
-            if(contMay>0 && contMin>0 && contNum>0 && contSim>0){
-                "valida"
-                if(debil==true){
-                    document.getElementById("resultado").innerHTML="La contraseña "+pass+" es válida pero del tipo débil";
+            
+            for(var i=0;i<=pass.length-1;i++){
+                //console.log(pass.substring(i,i+1));
+                if(mayusculas.includes(pass.substring(i,i+1))){
+                    contMay++;
                 }
-            if(fuerte==true){
-                document.getElementById("resultado").innerHTML="La contraseña "+pass+" es válida y es del tipo fuerte";
             }
+            for(i=0;i<=pass.length-1;i++){
+                if(minusculas.includes(pass.substring(i,i+1))){
+                    contMin++;
+                }
+            }
+            for(i=0;i<=pass.length-1;i++){
+                if(numeros.includes(pass.substring(i,i+1))){
+                    contNum++;
+                }
+            }
+            for(i=0;i<=pass.length-1;i++){
+                if(simbolos.includes(pass.substring(i,i+1))){
+                    contSim++;
+                }
+            }
+            /*i=0;
+            while(i<pass.length && mayusculas.includes(pass.substring(i,i+1))){
+                i++;
+                contMay++;
+            }*/
+            console.log(contMay);
+            console.log(contMin);
+            console.log(contNum);
+            console.log(contSim);
             
-            
+            if(contMay>0 && contMin>0 && contNum>0 && contSim>0 ){
+                //"válida"
+                //calculo de porcentajes generales
+                porcentMay=(contMay/numCaracteres)*100;
+                porcentMin=(contMin/numCaracteres)*100;
+                porcentNum=(contNum/numCaracteres)*100;
+                porcentSim=(contSim/numCaracteres)*100;
+                console.log(porcentMay);
+                console.log(porcentMin);
+                console.log(porcentNum);
+                console.log(porcentSim);
+                //calculo del tercio letras: con la suma de los caracteres de mayusculas y minusculas calculo el porcentaje de uno de ellos, no puede ser menor que el 33.3 
+                tercio=(contMay/(contMay+contMin))*100;
+                console.log(tercio);
+                if(porcentNum>=20 && porcentSim>=10 && tercio>33.3){
+                    document.getElementById("resultado").innerHTML="La contraseña "+pass+" es válida y es del tipo fuerte";
+                }else{
+                    document.getElementById("resultado").innerHTML="La contraseña "+pass+" es válida, pero es de tipo débil";
+                }
             }else{
-                "invalida"
+                document.getElementById("resultado").innerHTML="La contraseña "+pass+" es inválida, no cumple con los requisitos mínimos";
             }
-
-            
-            
-        }
-            
+        }     
     </script>
 </body>
 </html>
