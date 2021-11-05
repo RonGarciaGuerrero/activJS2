@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ej5</title>
+    <!-- Autor: Ronald Garcia Guerrero -->
+</head>
+<body>
+    <h1>EJ5. Cree una página web que permita obtener el resultado de una serie de operaciones matemáticas. La web pedirá al usuario una cadena de caracteres conteniendo las operaciones matemáticas y sus operandos.</h1>
+    <h3>
+        Por ejemplo, la cadena de entrada puede ser “1+2-3*4/5”. La página imprimirá el resultado parcial y total de las operaciones, ejecutando éstas de izquierda a derecha sin importar la precedencia de los operadores, de tal forma que sea más sencilla la evaluación de los mismos. 
+        Para la cadena de entrada anterior, el resultado total sería 0 (y no 0.6, que sería el resultado si se tiene en cuenta la precedencia de los operadores) y los resultados parciales serían 1 + 2 = 3, 3 – 3 = 0, 0 * 4 = 0 y 0 / 5 = 0. 
+        Observe que cada operación usa como primer operando el resultado de la operación anterior. Por cada operación matemática soportada emplee una función distinta para ejecutar la operación, aceptando éstas como argumento los dos operandos y devolviendo el resultado de la operación.    
+    </h3> 
+
+
+    
+    
+    <label>Introduzca la operación matemática:</label><br><br>
+    <input required type="text" id="p1" name="p1" min="3"><br><br>
+    <button onclick="operadores()">Calcular</button>
+    <p id="resultado"></p>
+    
+    <script>
+        function operadores(){
+            var cadena = document.getElementById("p1").value); 
+            //console.log(nivel);
+            var suma, resta, mult, div;
+            var operadores="+-*/";
+            var numeros"0123456789";
+            var op1,op2;
+            op1="";
+            for(var i=0;i<=cadena.length-1;i++){
+                //console.log(cadena.substring(i,i+1));
+                if(numeros.includes(cadena.substring(i,i+1))){
+                    op1=op1+cadena.substring(i,i+1);
+                }
+            }
+        }
+            document.getElementById("resultado").innerHTML=num;
+        }
+    </script>
+</body>
+</html>
