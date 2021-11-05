@@ -1,5 +1,5 @@
 
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -10,18 +10,60 @@
 </head>
 <body>
     <h1>EJ4. Crearemos una página que nos servirá para determinar si una contraseña se puede considerar fuerte. Una contraseña fuerte será una contraseña que es lo suficientemente larga como para no ser descubierta por fuerza bruta (exigiremos un largo de, al menos, 10 caracteres) y que contiene letras mayúsculas, minúsculas, números y símbolos en una variedad suficiente.
-Para este caso, consideraremos una contraseña como fuerte si contiene al menos un 10% de símbolos, un 20% de números y al menos un tercio de las letras en caso distinto (mayúsculas o minúsculas) al dominante en la contraseña.
+    Para este caso, consideraremos una contraseña como fuerte si contiene al menos un 10% de símbolos, un 20% de números y al menos un tercio de las letras en caso distinto (mayúsculas o minúsculas) al dominante en la contraseña.
     </h1>
     
-    <label>Introduzca el número de niveles:</label><br><br>
-    <input required type="number" id="p1" name="p1" min="1"><br><br>
-    <button onclick="myFunction()">Imprimir</button>
+    <label>Introduzca la contraseña a evaluar:</label><br><br>
+    <input required type="text" id="psw" name="psw"  title="Debe contener al menos un numero, letras mayusculas y minusculas, en total al menos 10 caracteres"><br><br>
+    <button onclick="myPassword()">Evaluar</button>
     <p id="resultado"></p>
-    
+    <!-- pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{10,}"  -->
     <script>
-        var strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
     
-        function myFunction(){
+        function myPassword(){
+            var pass = document.getElementById("psw").value;
+            var fuerte,debil;
+            var mayusc,minusc,simb,num;
+            var contMay,contMin,contSim,contNum;
+            var porcentMay,porcentMin,porcentSim,porcentNum;
+            fuerte=false;
+            debil=true;
+            console.log(pass);
+            mayusculas="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            minusculas="abcdefghijklmnopqrstuvwxyz";
+            simbolos="!\"#$%&'()*+,-./";
+            numeros="0123456789";
+            //voy poniendo contadores a cada elemento
+            if(pass.includes(mayusculas)){
+                contMay++;
+            }
+            if(pass.includes(minusculas)){
+                contMin++;
+            }
+            if(pass.includes(numeros)){
+                contNum++;
+            }
+            if(pass.includes(simbolos)){
+                contSim++;
+            }
+
+            if(contMay>0 && contMin>0 && contNum>0 && contSim>0){
+                "valida"
+                if(debil==true){
+                    document.getElementById("resultado").innerHTML="La contraseña "+pass+" es válida pero del tipo débil";
+                }
+            if(fuerte==true){
+                document.getElementById("resultado").innerHTML="La contraseña "+pass+" es válida y es del tipo fuerte";
+            }
+            
+            
+            }else{
+                "invalida"
+            }
+
+            
+            
+        }
             
     </script>
 </body>
