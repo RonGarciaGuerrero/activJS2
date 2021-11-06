@@ -15,9 +15,6 @@
         Observe que cada operación usa como primer operando el resultado de la operación anterior. Por cada operación matemática soportada emplee una función distinta para ejecutar la operación, aceptando éstas como argumento los dos operandos y devolviendo el resultado de la operación.    
     </h3> 
 
-
-    
-    
     <label>Introduzca la operación matemática:</label><br><br>
     <input required type="text" id="p1" name="p1" min="3"><br><br>
     <button onclick="operadores()">Calcular</button>
@@ -25,22 +22,78 @@
     
     <script>
         function operadores(){
-            var cadena = document.getElementById("p1").value); 
-            //console.log(nivel);
+            var cadena = "+"+document.getElementById("p1").value; 
+            console.log(cadena);
             var suma, resta, mult, div;
             var operadores="+-*/";
-            var numeros"0123456789";
-            var op1,op2;
-            op1="";
+            var numeros="0123456789";
+            var num,num1,numCopia;
+            var total=0;
+            var oper;
+            num="0";
+            num1="0";
+            function suma(a,b){
+                var resp=a+b;
+                return resp;
+            }
+            function resta(a,b){
+                var resp=a-b;
+                return resp;    
+            }
+            function multiplicacion(a,b){
+                var resp=a*b;
+                return resp;    
+            }
+            function division(a,b){
+                var resp=a/b;
+                return resp;    
+            }
+            function posSigOperador(expresion){
+                var pos, opSum, opRes, opMul, opDiv;
+                opSum=expresion.indexOf("+");
+                opRes=expresion.indexOf("-");
+                opMul=expresion.indexOf("*");
+                opDiv=expresion.indexOf("/");
+                pos=Math.min(opSum, opRes, opMul, opDiv);
+                return pos;
+            }
+            function sigOperador(expresion){
+                var op, opSum, opRes, opMul, opDiv;
+                opSum=expresion.indexOf("+");
+                opRes=expresion.indexOf("-");
+                opMul=expresion.indexOf("*");
+                opDiv=expresion.indexOf("/");
+                op=Math.min(opSum, opRes, opMul, opDiv);
+                return op;
+            }
+            console.log(posSigOperador(cadena));
+            console.log(sigOperador(cadena));
             for(var i=0;i<=cadena.length-1;i++){
-                //console.log(cadena.substring(i,i+1));
-                if(numeros.includes(cadena.substring(i,i+1))){
-                    op1=op1+cadena.substring(i,i+1);
+                num=cadena.substring(0,posSigOperador(cadena)-1);
+                console.log(num);
+                oper=sigOperador(cadena);
+                console.log(oper);
+                if(oper=="+"){
+                    total=suma(total,num);
                 }
+                if(oper=="-"){
+                    total=resta(total,num);
+                }
+                if(oper=="*"){
+                    total=multiplicacion(total,num);
+                }
+                if(oper=="/"){
+                    total=division(total,num);
+                }
+                //total=total+oper+num;
+                console.log("total= "+total);
+                cadena=cadena.substring(oper);
+                console.log(cadena);
+
             }
         }
-            document.getElementById("resultado").innerHTML=num;
-        }
+        //document.getElementById("resultado").innerHTML=num;
+        
     </script>
 </body>
 </html>
