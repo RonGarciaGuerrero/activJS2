@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>P3</title>
+        <!-- Autor: Ronald Garcia Guerrero -->
+</head>
+<body>
+    <h1>Cree una página que imprima en forma de tabla una lista del ancho y alto de las televisiones, en función del tamaño de su diagonal, desde un mínimo de pulgadas indicado por el usuario (debe ser superior a cero) hasta el máximo indicado también por el usuario (debe ser igual o superior al mínimo).</h1>
+    
+    <label for="">Introduzca el valor mínimo de pulgadas:</label><br/>
+    <input type="number" min="1" id="minPulg"><br/>
+    <label for="">Introduzca el valor máximo de pulgadas:</label><br/>
+    <input type="number" min="2" id="maxPulg"><br/><br/>
+    <button onclick="tablaPulgadas()">Ver Tabla</button>
+    <script>
+        
+        function tablaPulgadas(){
+            var minPulg = parseInt(document.getElementById("minPulg").value);
+            var maxPulg = parseInt(document.getElementById("maxPulg").value);
+            var min,max;
+            console.log(minPulg);
+            console.log(maxPulg);
+        }
+        
+        //1-Pedir valor minimo y maximo de pulgadas
+
+        //2-Comprobar que los valores que han metido son válidos
+
+        //3-calcular lados de la tele en funcion de las pulgadas
+        //Este cálculo está basado en televisores con una relacion de 16:9 que son la gran mayoria
+        //Alto = 1,245 x pulgadas = 1,245 x 40 = 49,8 cm
+        //Ancho = 2,21375 x pulgadas = 88,55 cm
+
+        //4-Construir la tabla
+
+
+    </script>
+    
+
+
+
+</body>
+</html>
