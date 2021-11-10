@@ -20,13 +20,13 @@
 
     <label>Inserte el número de segundos que ha de contar:</label><br/>
     <input type="number" min="1" id="seg" title="Debe ser mínimo 1 seg"><br/><br/>
-    <button onclick="cronometro()">Aceptar</button> 
-    <br/><br/>
+    <!-- <button onclick="cronometro()">Aceptar</button> 
+    <br/><br/> -->
     <label>Para iniciar el cronometro presione "Iniciar"</label>
-    <button onclick="setTimeout(alerta, cronometro)">Iniciar</button>
+    <button onclick="myFunction()">Iniciar</button>
     <h1 id="wait"></h1>
     <div id="tiempoAgotado"></div>
-
+    
     <script>
         // 2- convierto los segundos a milisegundos
         function cronometro(){
@@ -35,10 +35,14 @@
             return miliseg;
         }  
         function alerta(){ //aquí se pone el aviso de que se acabó el tiempo 
-            document.getElementById("tiempoAgotado").innerHTML="TIEMPO AGOTADO";
+            document.getElementById("tiempoAgotado").innerHTML="<h1>TIEMPO AGOTADO</h1>";
+            
+
         }
-        function setTimeout(){
-            document.getElementById("wait").innerHTML="Esperando...";
+        function myFunction(){
+        // 3-Mostrar Esperando setTimeout(alerta(), cronometro()
+            setTimeout(function(){ alerta();}, cronometro());
+            
         }
     </script>
 </body>
