@@ -7,11 +7,28 @@
     <title>P2</title>
     <!-- Autor: Ronald Garcia Guerrero -->
     <!-- 
-        
         <button onclick="setTimeout(alerta, milisegundos)">
         setTimeout es lo que inicia el contador
         Cuando termine el contador se llama a la función alerta
         Que debe hacer los cambios en la página -->
+    
+        <!-- animacion para que parpadee -->
+    <style>
+        .blink {
+        animation: blink-animation 1s steps(5, start) infinite;
+        -webkit-animation: blink-animation 1s steps(5, start) infinite;
+        }
+        @keyframes blink-animation {
+        to {
+            visibility: hidden;
+        }
+        }
+        @-webkit-keyframes blink-animation {
+        to {
+            visibility: hidden;
+        }
+        }
+    </style>
 </head>
 <body>
     <h1>P2. Cree una página web que servirá como cronómetro. Al entrar preguntará el número de segundos que se ha de contar.</h1>
@@ -20,12 +37,10 @@
 
     <label>Inserte el número de segundos que ha de contar:</label><br/>
     <input type="number" min="1" id="seg" title="Debe ser mínimo 1 seg"><br/><br/>
-    <!-- <button onclick="cronometro()">Aceptar</button> 
-    <br/><br/> -->
-    <label>Para iniciar el cronometro presione "Iniciar"</label>
-    <button onclick="myFunction()">Iniciar</button>
-    <h1 id="wait"></h1>
-    <div id="tiempoAgotado"></div>
+    <label>Para iniciar el cronometro presione aqui</label>
+    <button onclick="iniciar()">Iniciar</button>
+    <h1 id="wait" style="display:none">Esperando...</h1>
+    <h1 id="done" class="blink" style="display:none; background-color: red; color: white;">!TIEMPO AGOTADO¡<br/><br/></div>
     
     <script>
         // 2- convierto los segundos a milisegundos
@@ -34,16 +49,19 @@
             console.log(miliseg);
             return miliseg;
         }  
-        function alerta(){ //aquí se pone el aviso de que se acabó el tiempo 
-            document.getElementById("tiempoAgotado").innerHTML="<h1>TIEMPO AGOTADO</h1>";
+        function alerta(){ //aquí se pone el aviso de que se acabó el tiempo mostramos "esperando" y ocultamos "tiempo agotado"
+             
+            document.getElementById("wait").style.display="none";
+            document.getElementById("done").style.display="block";
             
 
         }
-        function myFunction(){
-        // 3-Mostrar Esperando setTimeout(alerta(), cronometro()
-            document.getElementById("wait").innerHTML="<h1>Esperando...</h1>";
+        function iniciar(){
+        // 3-Mostrar "Esperando"  y ocultar "tiempo agotado"
+            document.getElementById("wait").style.display="block";
+            document.getElementById("done").style.display="none";
             setTimeout(function(){ alerta();}, cronometro());
-            
+            // lanzamos el contador y  se ejecuta la función "alerta" al finalizar
         }
     </script>
 </body>
